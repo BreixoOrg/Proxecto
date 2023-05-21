@@ -27,20 +27,27 @@
             <div class="d-flex formGlobalContainer">
                 <div class="container" id="container">
                     <div class="form-container sign-up-container">
-                        <form action="#">
+                        <form action="/register" method="post">
                             <h1>Crear cuenta</h1>
-                            <input type="text" placeholder="Nombre de usuario" />
-                            <input type="email" placeholder="Email" />
-                            <input type="password" placeholder="Contraseña" />
-                            <button>Crear</button>
+                            <input type="text" name="username" value="<?php echo isset($inputR['username']) ? $inputR['username'] : '' ?>" placeholder="Nombre de usuario" />
+                            <p class="text m-2 p-0 text-danger"><?php echo isset($errores['username']) ? $errores['username'] : '' ?></p>
+                            
+                            <input type="email" name="email" value="<?php echo isset($inputR['email']) ? $inputR['email'] : '' ?>" placeholder="Email" />
+                            <p class="text m-2 p-0 text-danger"><?php echo isset($errores['email']) ? $errores['email'] : '' ?></p>
+
+                            <input type="password" name="password" placeholder="Contraseña" />
+                            <p class="text m-2 p-0 text-danger"><?php echo isset($errores['password']) ? $errores['password'] : '' ?></p>
+                            <button type="submit" name="bt_register">Registrarse</button>
                         </form>
                     </div>
                     <div class="form-container sign-in-container">
-                        <form action="#">
+                        <form action="/login" method="post">
                             <h1>Iniciar sesión</h1>
-                            <input type="text" placeholder="Nombre de usuario" />
-                            <input type="password" placeholder="Contraseña" />
-                            <button>Iniciar</button>
+                            <input type="text" name="username" value="<?php echo isset($inputL['username']) ? $inputL['username'] : '' ?>" placeholder="Nombre de usuario" />
+                            
+                            <input type="password" name="password" placeholder="Contraseña" />
+                            <p class="text m-2 p-0 text-danger"><?php echo isset($erroresL) ? $erroresL : '' ?></p>
+                            <button type="submit" name="bt_login">Iniciar</button>
                         </form>
                     </div>
                     <div class="overlay-container">

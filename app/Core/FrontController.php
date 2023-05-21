@@ -18,11 +18,25 @@ class FrontController{
                         $controlador->login();
                     }
                     , 'get');
+                    
+            Route::add('/register',
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\UsersController();
+                        $controlador->login();
+                    }
+                    , 'get');
 
             Route::add('/login',
                     function(){
                         $controlador = new \Com\Daw2\Controllers\UsersController();
                         $controlador->loginProcess();
+                    }
+                    , 'post');
+                    
+            Route::add('/register',
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\UsersController();
+                        $controlador->registerProcess();
                     }
                     , 'post');
 

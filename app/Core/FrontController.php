@@ -9,7 +9,30 @@ class FrontController{
     static function main(){
         session_start();
         
-        
+        if (!isset($_SESSION['usuario'])) {
+            //login
+
+            Route::add('/login',
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\UsersController();
+                        $controlador->login();
+                    }
+                    , 'get');
+
+            Route::add('/login',
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\UsersController();
+                        $controlador->loginProcess();
+                    }
+                    , 'post');
+
+            Route::pathNotFound(
+                function () {
+                    header('location: /login');
+                }
+            );
+        }
+        else{
         
             Route::add('/', 
                     function(){
@@ -17,7 +40,7 @@ class FrontController{
                         $controlador->index();
                     }
                     , 'get');
-                    
+
 
             Route::pathNotFound(
                 function(){
@@ -31,7 +54,8 @@ class FrontController{
                     $controller = new \Com\Daw2\Controllers\ErroresController();
                     $controller->error405();
                 }
-            );
+                );
+            }
         Route::run();
     }
 }

@@ -4,7 +4,8 @@ namespace Com\Daw2\Models;
 
 class UsersModel extends \Com\Daw2\Core\BaseModel {
     
-    
+    //Devuelve un array con los datos del usuario
+    //En caso de que no exista el usuario o la contraseña esté mal devuelve NULL
     function login(string $username, string $pass){
         $sql = "SELECT * FROM usuario WHERE username = :username AND baja = 0";
         
@@ -28,8 +29,8 @@ class UsersModel extends \Com\Daw2\Core\BaseModel {
     }
     
     
-    //Register Aqui
-    function register(string $username, string $email, string $password){
+    //Proceso de registro que devuelve TRUE en caso de que se registre exitosamente. Devuelve FALSE en caso de que no se registrase
+    function register(string $username, string $email, string $password) : bool{
         
         $registro = [];
         
@@ -44,6 +45,19 @@ class UsersModel extends \Com\Daw2\Core\BaseModel {
         $stmt = $this->pdo->prepare($sql);
 
         return $stmt->execute($registro);
+    }
+    
+    //Selecciona los datos de un usuario pasándole un USERNAME
+    function selectUser(string $username){
+        $sql = "SELECT * FROM usuario WHERE username = :username AND baja = 0";
+        
+        $stmt = $this->pdo->prepare($sql);
+        
+        $stmt->execute([
+            "username" => $username
+        ]);
+        
+        return $stmt->fetchAll()[0];
     }
     
     

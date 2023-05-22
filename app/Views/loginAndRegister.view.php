@@ -27,10 +27,11 @@
             <div class="d-flex formGlobalContainer">
                 <div class="container" id="container">
                     <div class="form-container sign-up-container">
+                        <!-- CREAR CUENTA -->
                         <form action="/register" method="post">
                             <h1>Crear cuenta</h1>
                             <input type="text" name="username" value="<?php echo isset($inputR['username']) ? $inputR['username'] : '' ?>" placeholder="Nombre de usuario" />
-                            <p class="text m-2 p-0 text-danger"><?php echo isset($errores['username']) ? $errores['username'] : '' ?></p>
+                            <p class="text m-2 p-0 text-danger"><?php echo isset($errores['username']) ? $errores['username'] : '' ?><?php echo isset($errores['catch']) ? $errores['catch'] : '' ?></p>
                             
                             <input type="email" name="email" value="<?php echo isset($inputR['email']) ? $inputR['email'] : '' ?>" placeholder="Email" />
                             <p class="text m-2 p-0 text-danger"><?php echo isset($errores['email']) ? $errores['email'] : '' ?></p>
@@ -41,6 +42,7 @@
                         </form>
                     </div>
                     <div class="form-container sign-in-container">
+                        <!-- LOGEARSE -->
                         <form action="/login" method="post">
                             <h1>Iniciar sesión</h1>
                             <input type="text" name="username" value="<?php echo isset($inputL['username']) ? $inputL['username'] : '' ?>" placeholder="Nombre de usuario" />
@@ -50,6 +52,7 @@
                             <button type="submit" name="bt_login">Iniciar</button>
                         </form>
                     </div>
+                    <!-- PORTADAS QUE TAPAN -->
                     <div class="overlay-container">
                         <div class="overlay" id="overlay">
                             <div class="overlay-panel overlay-left">

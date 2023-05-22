@@ -4,10 +4,12 @@ namespace Com\Daw2\Controllers;
 
 class UsersController extends \Com\Daw2\Core\BaseController{
     
+    //Muestra la vista del login
     function login(){
         $this->view->show('loginAndRegister.view.php');
     }
     
+    //Proceso de logearse
     function loginProcess(){
         
         $data = [];
@@ -28,10 +30,16 @@ class UsersController extends \Com\Daw2\Core\BaseController{
                 $this->view->show('loginAndRegister.view.php',$data);
 
             }else{
-                //Poner variable usuario en session y pasar a ver si tiene subscripcion o necesita renovar
-                var_dump("Logeado con exito");die();
+                //Al llegar aqui ya está logeado con éxito
                 $_SESSION['usuario'] = $user;
-                $this->view->showViews(array('templates/header.view.php', 'inicio.view.php', 'templates/footer.view.php'));
+                
+                if($this->subsEnVigor($user['username'])){
+                    header("location: /shironime");
+                }
+                else{
+                    header("location: /buySubs");
+                }
+                
             }
         }else{
             $data['erroresL'] = "El usuario o la contraseña son incorrectos";
@@ -40,39 +48,47 @@ class UsersController extends \Com\Daw2\Core\BaseController{
         
     }
     
-    //Register aqui
+    //Proceso de registro
     function registerProcess(){
         
-        $data = [];
+        //Si intentan logearse con un usuario ya registrado se lanza una excepción. Con este try catch resolvemos la excepción lanzando un mensaje de error.
+        try{
         
-        $data['inputR'] = filter_var_array($_POST, FILTER_SANITIZE_SPECIAL_CHARS);
-        
-        $errores = [];
-        //Comprobamos que el usuario y la contraseña esten bien
-        $errores = $this->checkUsernamePassword($_POST);
-        
-        //Comprobamos el email
-        if(!isset($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-            $errores['email'] = "Email no válido";
-        }
-        
-        if(is_array($errores) && count($errores) == 0){
-            
-            //llamar al modelo para que inserte los datos
-            $modelUser =  new \Com\Daw2\Models\UsersModel();
-            $userAddOk = $modelUser->register($_POST['username'], $_POST['email'], $_POST['password']);
-            
-            if($userAddOk){
-                //llevarlo a la pantalla de compra
-                var_dump("Añadido exitosamente");die();
+            $data = [];
+
+            $data['inputR'] = filter_var_array($_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+
+            $errores = [];
+            //Comprobamos que el usuario y la contraseña esten bien
+            $errores = $this->checkUsernamePassword($_POST);
+
+            //Comprobamos el email
+            if(!isset($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+                $errores['email'] = "Email no válido";
             }
-            
-        }else{
-            $data['errores'] = $errores;
+
+            //Comprobamos si es string por si solo falló el email o si es un array por si fallo otro campo del checkUsernamePassword
+            if(is_array($errores) && count($errores) == 0){
+
+                //llamar al modelo para que inserte los datos
+                $modelUser =  new \Com\Daw2\Models\UsersModel();
+                $userAddOk = $modelUser->register($_POST['username'], $_POST['email'], $_POST['password']);
+
+                if($userAddOk){
+                    header("location: /buySubs");
+                }
+
+            }else{
+                //cargamos los errores en $data y mostramos de nuevo el formulario
+                $data['errores'] = $errores;
+            }
+
+            $this->view->showViews(array('loginAndRegister.view.php') , $data);
         }
-        
-        $this->view->showViews(array('loginAndRegister.view.php') , $data);
-        
+        catch(\Exception $e){
+            $data['errores']['catch'] = "El usuario ya existe";
+            $this->view->showViews(array('loginAndRegister.view.php') , $data);
+        }
     }
     
     //ya dejamos la funcion de logout hecha
@@ -83,10 +99,12 @@ class UsersController extends \Com\Daw2\Core\BaseController{
     
     //Comprueba que el usuario y la contraseña estén correctos
     //Devuelve un array de clave el campo que fallo y de valo el motivo del fallo
-    private function checkUsernamePassword($post, bool $checkPass = true){
+    //Si lo devuelve vacío significa que no hay ningún error
+    private function checkUsernamePassword($post, bool $checkPass = true) : array{
         
         $errores = [];
         
+        //USERNAME
         if(isset($post['username']) && !empty($post['username'])){
             
             if(preg_match("/[^A-Za-z0-9]/", $post['username'])){
@@ -98,6 +116,8 @@ class UsersController extends \Com\Daw2\Core\BaseController{
             $errores['username'] = "El nombre de usuario no puede estar en blanco";
         }
         
+        //PASSWORD
+        //if por si no queremos comprobar la contraseña
         if($checkPass){
         
             if(isset($post['password']) && !empty($post['password'])){
@@ -125,6 +145,18 @@ class UsersController extends \Com\Daw2\Core\BaseController{
         }
         
         return $errores;
+    }
+    
+    //Devuelve true en caso de que la subscripción siga en vigor
+    //Devuelve falso en caso de que se acabase la subscripción
+    //Solo la llamamos cuando sabemos que el username está bien escrito, como por ejemplo en $_SESSION['usuario]
+    function subsEnVigor(string $username){
+        
+        $modelUser =  new \Com\Daw2\Models\UsersModel();
+        $user = $modelUser->selectUser($username);
+        
+        return strtotime($user['finalSubs']) >= strtotime(date("Y-m-d",time()));
+        
     }
     
 }

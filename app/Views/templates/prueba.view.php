@@ -5,6 +5,7 @@
             <div class="col-12 bg-success">
                 <p class="text-primary">Primero</p>
             </div>
+            <a href="/logout">DESLOGEAR</a>
             <div class="col-12 bg-secondary">
                 <p class="text-secondary">Segundo</p>
             </div>

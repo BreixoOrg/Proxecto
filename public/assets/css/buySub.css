@@ -1,0 +1,16 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../img/nublado-cumulo-paisaje-neblina.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card-body{
+    background-image: url(../img/sub3Meses.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+
+    box-shadow: 0px 10px 10px black;
+}

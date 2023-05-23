@@ -1,7 +1,7 @@
 <?php
 
 namespace Com\Daw2\Controllers;
-
+/*CONTROLDAOR DE LA PAGINA DE INICIO DE LA WEB - /shironime*/
 class InicioController extends \Com\Daw2\Core\BaseController {
 
     public function index() {
@@ -10,7 +10,7 @@ class InicioController extends \Com\Daw2\Core\BaseController {
             'breadcrumb' => ['Inicio']
         );
         $data['prueba'] = "Footer";
-        $this->view->showViews(array('templates/header2.view.php','templates/prueba.view.php','templates/footer2.view.html'), $data);
+        $this->view->showViews(array('templates/headerShiro.view.php','/indexShiro.view.php','templates/footerShiro.view.php'), $data);
     }
 
 }

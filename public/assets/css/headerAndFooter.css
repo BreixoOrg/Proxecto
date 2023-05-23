@@ -1,0 +1,41 @@
+/*HEADER CSS*/
+
+    /*Botón de perfil*/
+    .btPerfil{
+        margin-left: 5px;
+        background-color: #22222b;
+    }
+
+    /*Color del botón de buscar */
+    .btSearch{
+        background-color: #434351;
+    }
+
+    /*Color de fondo del header*/
+    header{
+        background-color: #ac6291;
+    }
+
+    /*Fondo de la página*/
+    .bgBody{
+        background-color: #ece7eb;
+    }
+
+    /*Remarca los enlaces*/
+    .navRemark:hover{
+        background-color: #ece7eb;
+    }
+
+
+/*FOOTER CSS*/
+
+    /*Medidas para la imagen del footer*/
+    .footImg{
+        max-height: 150px;
+        border-radius: 0% !important;
+    }
+
+    /*Color de fondo de footer*/
+    .bgFooter{
+        background-color: #e6cadf;
+    }

@@ -79,7 +79,7 @@ class FrontController{
                 
                 Route::add('/shironime', 
                     function(){
-                        $controlador = new \Com\Daw2\Controllers\InicioController();
+                        $controlador = new \Com\Daw2\Controllers\AnimeController();
                         $controlador->index();
                     }
                     , 'get');

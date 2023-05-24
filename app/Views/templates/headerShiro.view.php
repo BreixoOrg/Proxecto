@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEMP</title>
+    <title>SHIRONIME</title>
 
     <!--CSS-->
 
@@ -49,18 +49,18 @@
                         </li>
                     </ul>
                     <form action="/buscarAnime" method="post" class="d-flex mb-2">
-                        <input class="form-control me-2" type="search" placeholder="Buscador..." aria-label="Search">
+                        <input class="form-control me-2" name="animeNameToSearch" type="search" placeholder="Qué buscas..." aria-label="Search">
                         <button class="btn btSearch text-white" type="submit">Buscar</button>
                     </form>
                     <div class="dropdown mb-2">
                         <button class="btn btPerfil text-white" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Nombre_usuario
+                            <?php echo isset($_SESSION['usuario']['username']) ? $_SESSION['usuario']['username'] : 'USER' ?>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="#">Perfil</a></li>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                            <li class="dropdown-item">Shirocoins: </li>
+                            <li class="dropdown-item">Shirocoins: <?php echo isset($_SESSION['usuario']['shirocoin']) ? $_SESSION['usuario']['shirocoin'] : 'NO-ENCONTRADO' ?></li>
                         </ul>
                     </div>
                 </div>

@@ -15,7 +15,7 @@
     }
 
     .card-img-top{
-        max-height: 350px;
+        max-height: 450px;
         aspect-ratio: 4/3;
         background-size: cover;
         background-repeat: no-repeat;

@@ -1,3 +1,4 @@
+</main>
 <footer class="wrapper p-2 bgFooter">
     <div class="container overflow-hidden">
         <div class="row d-flex justify-content-around">

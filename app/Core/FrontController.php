@@ -84,6 +84,13 @@ class FrontController{
                     }
                     , 'get');
                     
+                Route::add('/shironime/search', 
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\AnimeController();
+                        $controlador->animeSerach();
+                    }
+                    , 'post');
+                    
                 Route::add('/logout', 
                     function(){
                         $controlador = new \Com\Daw2\Controllers\UsersController();

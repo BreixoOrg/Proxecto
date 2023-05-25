@@ -16,6 +16,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
+    <?php for($y = 0; $y < count($styles); $y++) { ?>
+        <link rel="stylesheet" href="<?php echo $styles[$y] ?>">
+    <?php } ?>
+    
     <!-- Header AND Footer CSS -->
     <link rel="stylesheet" href="assets/css/headerAndFooter.css">
 
@@ -29,7 +33,7 @@
 
         <nav class="col-12 navbar navbar-expand-md navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand p-2 rounded navRemark" href="/shirosime">SHIRONIME</a>
+                <a class="navbar-brand p-2 fs-1 rounded navRemark" href="/shirosime">SHIRONIME</a>
                 <!--Botán de bootstrap para el menú-->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -48,16 +52,16 @@
                             <a class="nav-link" href="/shironime/preguntadiaria">PREGUNTA DIARIA</a>
                         </li>
                     </ul>
-                    <form action="/buscarAnime" method="post" class="d-flex mb-2">
+                    <form action="/shironime/search" method="post" class="d-flex mb-2">
                         <input class="form-control me-2" name="animeNameToSearch" type="search" placeholder="Qué buscas..." aria-label="Search">
                         <button class="btn btSearch text-white" type="submit">Buscar</button>
                     </form>
-                    <div class="dropdown mb-2">
+                    <div class="dropdown dropdown-menu-right mb-2 ">
                         <button class="btn btPerfil text-white" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <?php echo isset($_SESSION['usuario']['username']) ? $_SESSION['usuario']['username'] : 'USER' ?>
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <ul class="dropdown-menu dropdown-menu-start dropdown-menu-md-end" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="#">Perfil</a></li>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             <li class="dropdown-item">Shirocoins: <?php echo isset($_SESSION['usuario']['shirocoin']) ? $_SESSION['usuario']['shirocoin'] : 'NO-ENCONTRADO' ?></li>
@@ -68,3 +72,5 @@
         </nav>
 
     </header>
+    
+<main class=" mt-2 mb-2 rounded container bg-white p-3">

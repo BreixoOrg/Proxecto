@@ -91,7 +91,7 @@
                 <!--Parte INPUT CVV-->
                 <div class="col-sm-3">
                   <div class="form-outline">
-                    <input type="text" minlength="3" maxlength="4" value="<?php echo isset($input['cvv']) ? $input['cvv'] : '' ?>"  placeholder="111" id="formCVV" name="cvv" class="form-control <?php echo isset($errores['cvv']) ? 'is-invalid' : '' ?>" />
+                    <input type="number" minlength="3" maxlength="4" value="<?php echo isset($input['cvv']) ? $input['cvv'] : '' ?>"  placeholder="111" id="formCVV" name="cvv" class="form-control <?php echo isset($errores['cvv']) ? 'is-invalid' : '' ?>" />
                     <label class="form-label" for="formCVV">CVV</label>
                   </div>
                 </div>

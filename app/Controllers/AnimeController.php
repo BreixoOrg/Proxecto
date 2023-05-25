@@ -11,40 +11,69 @@ class AnimeController extends \Com\Daw2\Core\BaseController {
     public function index() {
         
         $data = [];
+        $data['styles'] = [
+            0 =>"/assets/css/headerAndFooter.css",
+            1 => "/assets/css/shironime.css"
+        ];
+        
+        
+        $data['ocultarNavAnimes'] = true;
+        
+        if($this->obtenerPage($_GET)){
+            $page = $_GET['page'];
+        }
+        else{
+            $page = 1;
+        }
+        
         
         //llamamos al modelo de Animes para que busque los 9 animes que se añadieron de último
         $modelAnime =  new \Com\Daw2\Models\AnimeModel();
-        $ultimosAnimes = $modelAnime->ultimosAnimes();
+        $ultimosAnimes = $modelAnime->ultimosAnimes($page);
+        
+        //Guardamos la página actual y calculamos las páginas totales que tenemos para mostrar
+        $data['page'] = $page;
+        $data['paginas'] = ceil($modelAnime->animesTotal() / $_ENV['animesPerPage']) ;
         
         $data['animesMostrar'] = $ultimosAnimes;
         
-        var_dump($data['animesMostrar']);
+        //var_dump($data['animesMostrar']);
         
         $this->view->showViews(array('templates/headerShiro.view.php','/indexShiro.view.php','templates/footerShiro.view.php'), $data);        
     }
     
-
-    public function buscarAnime() {
+    
+    /*Se accede mediante post*/
+    /*Busca todos los animes relacionados con la string*/
+    public function animeSerach() {
         $data = [];
         
-        //Comprobamos que tenemos un nombre de anime válido
-        if($this->checkAnimeName($_GET)){
-            //Si está bien buscamos el nombre
-            
-            //llamamos al modelo de Animes para que busque todos los animes relacionados con lo que puso el usuario
-            $modelUser =  new \Com\Daw2\Models\UsersModel();
-            $userAddOk = $modelUser->register($_POST['username'], $_POST['email'], $_POST['password']);
-            
-            
-            //AQUI LLAMAMOS A LA VISTA PERO CON LOS RESULTADOS
-            var_dump($_SESSION);
-            $this->view->showViews(array('templates/headerShiro.view.php','/indexShiro.view.php','templates/footerShiro.view.php'), $data);
-            
-        }
-        //Si no sirve devolvemos a la página de inicio
+        $data['styles'] = [
+            0 =>"../assets/css/headerAndFooter.css",
+            1 => "../assets/css/shironime.css"
+        ];
         
-        var_dump($_SESSION);
-        $this->view->showViews(array('templates/headerShiro.view.php','/indexShiro.view.php','templates/footerShiro.view.php'), $data);
+        $data['ocultarNavAnimes'] = false;
+        
+        if($this->checkAnimeName($_POST)){
+            $modelAnime =  new \Com\Daw2\Models\AnimeModel();
+            
+            $animes = $modelAnime->buscarAnimes($_POST['animeNameToSearch']);
+        }
+        else{
+            $animes = $modelAnime->ultimosAnimes($page);
+            $data['ocultarNavAnimes'] = true;
+        }
+        
+        //para que no nos falle
+        $data['page'] = 1;
+        $data['paginas'] = ceil($modelAnime->animesTotal() / $_ENV['animesPerPage']) ;
+        
+        $data['animesMostrar'] = $animes;
+        
+        //var_dump($data['animesMostrar']);
+        
+        $this->view->showViews(array('templates/headerShiro.view.php','/indexShiro.view.php','templates/footerShiro.view.php'), $data); 
     }
     
     
@@ -54,7 +83,7 @@ class AnimeController extends \Com\Daw2\Core\BaseController {
         
         if(isset($get['animeNameToSearch']) && !empty($get['animeNameToSearch']) && strlen($get['animeNameToSearch']) <= 100){
             
-            if(preg_match("/[^A-Za-z0-9]/", $get['animeNameToSearch'])){
+            if(preg_match("[^A-Za-z0-9 ]", $get['animeNameToSearch'])){
                 return false;
             }
             
@@ -64,6 +93,16 @@ class AnimeController extends \Com\Daw2\Core\BaseController {
         }
         
         return true;
+    }
+    
+    /*Comprueba si la página que le pasamos en válida y nos devuelve true en caso de estar bien, en caso contrario devolverá false*/
+    private function obtenerPage($get){
+        
+        if(isset($get['page']) && !empty($get['page']) && is_numeric($get['page']) && $get['page'] >= 1){
+            return true;
+        }
+        
+        return false;
     }
 
 }

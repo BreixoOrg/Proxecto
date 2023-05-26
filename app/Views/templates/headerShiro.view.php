@@ -53,7 +53,7 @@
                         </li>
                     </ul>
                     <form action="/shironime/search" method="post" class="d-flex mb-2">
-                        <input class="form-control me-2" name="animeNameToSearch" type="search" placeholder="Qué buscas..." aria-label="Search">
+                        <input class="form-control me-2" name="animeNameToSearch" type="search" value="<?php echo isset($stringBusqueda) ? $stringBusqueda : "" ?>" placeholder="Qué buscas..." aria-label="Search">
                         <button class="btn btSearch text-white" type="submit">Buscar</button>
                     </form>
                     <div class="dropdown dropdown-menu-right mb-2 ">
@@ -62,7 +62,6 @@
                             <?php echo isset($_SESSION['usuario']['username']) ? $_SESSION['usuario']['username'] : 'USER' ?>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-start dropdown-menu-md-end" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Perfil</a></li>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             <li class="dropdown-item">Shirocoins: <?php echo isset($_SESSION['usuario']['shirocoin']) ? $_SESSION['usuario']['shirocoin'] : 'NO-ENCONTRADO' ?></li>
                         </ul>

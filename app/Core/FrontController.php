@@ -77,6 +77,7 @@ class FrontController{
             else{
             //En caso de tener dias de subscripción. Previamente ya estamos logeados
                 
+                //Index
                 Route::add('/shironime', 
                     function(){
                         $controlador = new \Com\Daw2\Controllers\AnimeController();
@@ -84,12 +85,21 @@ class FrontController{
                     }
                     , 'get');
                     
+                //Buscar un anime
                 Route::add('/shironime/search', 
                     function(){
                         $controlador = new \Com\Daw2\Controllers\AnimeController();
                         $controlador->animeSerach();
                     }
                     , 'post');
+                    
+                //Entrar en los capitulos de un anime
+                Route::add('/shironime/animecompleto', 
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\AnimeController();
+                        $controlador->verCapsAnime();
+                    }
+                    , 'get');
                     
                 Route::add('/logout', 
                     function(){

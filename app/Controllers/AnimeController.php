@@ -57,12 +57,12 @@ class AnimeController extends \Com\Daw2\Core\BaseController {
         
         if($this->checkAnimeName($_POST)){
             $modelAnime =  new \Com\Daw2\Models\AnimeModel();
-            
             $animes = $modelAnime->buscarAnimes($_POST['animeNameToSearch']);
+            
+            $data['stringBusqueda'] = filter_var($_POST['animeNameToSearch'],FILTER_SANITIZE_SPECIAL_CHARS);
         }
         else{
-            $animes = $modelAnime->ultimosAnimes($page);
-            $data['ocultarNavAnimes'] = true;
+            $this->index();
         }
         
         //para que no nos falle
@@ -77,6 +77,47 @@ class AnimeController extends \Com\Daw2\Core\BaseController {
     }
     
     
+    //Enseña la vista de un anime con su descripción y sus capítulos
+    public function verCapsAnime() {
+        $data = [];
+        $data['styles'] = [
+            0 =>"../assets/css/headerAndFooter.css",
+            1 => "../assets/css/verCapsAnime.css"
+        ];
+        
+        //var_dump($_GET);die();
+        
+        if($this->existIdAnime($_GET)){
+            $idAnime = $_GET['idAnime'];
+            
+            //llamamos al modelo de Animes
+            $modelAnime =  new \Com\Daw2\Models\AnimeModel();
+            
+            if($modelAnime->existeAnime($idAnime)){
+                $ultimosAnimes = $modelAnime->obtenerAnime($idAnime);
+            
+                $data['animesMostrar'] = $ultimosAnimes;
+                
+                var_dump($data['animesMostrar']);
+
+                $this->view->showViews(array('templates/headerShiro.view.php','/verCapsAnime.view.php','templates/footerShiro.view.php'), $data);  
+            }
+            else{
+                //si no existe lo devolvemos al index
+                $this->index();
+            }
+        }
+        else{
+            //si intentan pasarnos algo que no sea un anime los llevamos al index directamente
+            $this->index();
+        }
+        
+             
+    }
+
+
+
+
     //Recibe un array como parámetro, $_GET
     //Devuelve true en caso de que el nombre del anime sea válido. Solo conteniendo letras, números, espacios y sin superar la longitud de 100 caracteres.
     private function checkAnimeName($get) : bool{
@@ -104,5 +145,16 @@ class AnimeController extends \Com\Daw2\Core\BaseController {
         
         return false;
     }
+    
+    /*Comprueba si nos pasan el id de un anime y nos devuelve true en caso de estar bien, en caso contrario devolverá false*/
+    private function existIdAnime($get){
+        
+        if(isset($get['idAnime']) && !empty($get['idAnime']) && is_numeric($get['idAnime']) && $get['idAnime'] >= 1){
+            return true;
+        }
+        
+        return false;
+    }
+    
 
 }

@@ -16,7 +16,7 @@
             <div class="col">
                 <div class="card h-100">
                     
-                    <a href="/shironime/animecompleto?id=<?php echo $animesMostrar[$i]['id_serie'] ?>"><img src="<?php echo $animesMostrar[$i]['rutaPortada'] ?>" class="card-img-top" alt="Imagen portada del anime <?php echo $animesMostrar[$i]['nombre'] ?>"></a>
+                    <a href="/shironime/animecompleto?idAnime=<?php echo $animesMostrar[$i]['id_serie'] ?>"><img src="<?php echo $animesMostrar[$i]['rutaPortada'] ?>" class="card-img-top" alt="Imagen portada del anime <?php echo $animesMostrar[$i]['nombre'] ?>"></a>
                     <div class="card-body overflow-hidden">
                         <h5 class="card-title"><?php echo ucwords($animesMostrar[$i]['nombre']) ?></h5>
                         <p class="card-text"><?php echo $animesMostrar[$i]['descripcion']?></p>
@@ -30,7 +30,7 @@
             <?php if(isset($animesMostrar[$i + 1])){ ?>
             <div class="col">
                 <div class="card h-100">
-                    <a href="/shironime/animecompleto?id=<?php echo $animesMostrar[$i]['id_serie'] ?>"><img src="<?php echo $animesMostrar[$i + 1]['rutaPortada'] ?>" class="card-img-top" alt="Imagen portada del anime <?php echo $animesMostrar[$i + 1]['nombre'] ?>"></a>
+                    <a href="/shironime/animecompleto?idAnime=<?php echo $animesMostrar[$i]['id_serie'] ?>"><img src="<?php echo $animesMostrar[$i + 1]['rutaPortada'] ?>" class="card-img-top" alt="Imagen portada del anime <?php echo $animesMostrar[$i + 1]['nombre'] ?>"></a>
                     <div class="card-body overflow-hidden">
                         <h5 class="card-title"><?php echo ucwords($animesMostrar[$i + 1]['nombre']) ?></h5>
                         <p class="card-text"><?php echo $animesMostrar[$i + 1]['descripcion']?></p>
@@ -45,7 +45,7 @@
             <?php if(isset($animesMostrar[$i + 2])){ ?>
             <div class="col">
                 <div class="card h-100">
-                    <a href="/shironime/animecompleto?id=<?php echo $animesMostrar[$i]['id_serie'] ?>"><img src="<?php echo $animesMostrar[$i + 2]['rutaPortada'] ?>" class="card-img-top" alt="Imagen portada del anime <?php echo $animesMostrar[$i + 2]['nombre'] ?>"></a>
+                    <a href="/shironime/animecompleto?idAnime=<?php echo $animesMostrar[$i]['id_serie'] ?>"><img src="<?php echo $animesMostrar[$i + 2]['rutaPortada'] ?>" class="card-img-top" alt="Imagen portada del anime <?php echo $animesMostrar[$i + 2]['nombre'] ?>"></a>
                     <div class="card-body overflow-hidden">
                         <h5 class="card-title"><?php echo ucwords($animesMostrar[$i + 2]['nombre']) ?></h5>
                         <p class="card-text"><?php echo $animesMostrar[$i + 2]['descripcion']?></p>

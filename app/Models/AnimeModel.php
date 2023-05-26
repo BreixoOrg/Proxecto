@@ -34,6 +34,42 @@ class AnimeModel extends \Com\Daw2\Core\BaseModel {
         return $stmt->fetchAll();
     }
     
+    //Nos devuelve un array con los datos del anime con el Id que nos pasan o NULL en caso de que no exista
+    function obtenerAnime($idAnime){
+        $sql = "select * from capitulosAnime c LEFT JOIN animes a ON a.id_serie = c.id_serie WHERE a.id_serie = :idAnime order by c.capitulo";
+        
+        $stmt = $this->pdo->prepare($sql);
+        
+        $stmt->execute([
+            "idAnime" => $idAnime
+        ]);
+        
+            
+        $animeDates = $stmt->fetchAll();
+            
+        return $animeDates;
+    }
+    
+    
+    //devuelve TRUE en caso de que exista el anime comprobandolo a traves del id y devuelve FALSE en caso de que no exista el id, por ende el anime tampoco
+    function existeAnime($idAnime){
+        $sql = "SELECT * FROM animes WHERE id_serie = :idAnime";
+        
+        $stmt = $this->pdo->prepare($sql);
+        
+        $stmt->execute([
+            "idAnime" => $idAnime
+        ]);
+        
+        if($stmt->rowCount() == 1){
+            
+            return true;
+        }
+        
+        return false;
+    }
+
+
     /*Devuelve el número de animes total que existe en la web*/
     function animesTotal(){
         $sql = "SELECT * FROM animes";

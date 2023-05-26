@@ -60,5 +60,15 @@ class UsersModel extends \Com\Daw2\Core\BaseModel {
         return $stmt->fetchAll()[0];
     }
     
+    //Devuelve TRUE en caso de que pudiese actualizar la fecha del usuario o FALSE en caso contrario
+    function actualizarDiaPregDiaria($username){
+        $sql = "UPDATE usuario SET ultimaPregRespond=NOW() WHERE username=:username AND baja = 0";
+        
+        $stmt = $this->pdo->prepare($sql);
+        
+        return $stmt->execute([
+            "username" => $username
+        ]);
+    }
     
 }

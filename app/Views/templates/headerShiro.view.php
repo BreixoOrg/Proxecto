@@ -17,7 +17,7 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     <?php for($y = 0; $y < count($styles); $y++) { ?>
-        <link rel="stylesheet" href="<?php echo $styles[$y] ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo $styles[$y] ?>">
     <?php } ?>
     
     <!-- Header AND Footer CSS -->
@@ -46,7 +46,7 @@
                             <a class="nav-link active" aria-current="page" href="/shironime">ANIME</a>
                         </li>
                         <li class="nav-item navRemark rounded">
-                            <a class="nav-link" href="/shironime/foro">FORO</a>
+                            <a class="nav-link" href="/shironime/canjear">CANJEAR SHIROCOINS</a>
                         </li>
                         <li class="nav-item navRemark rounded">
                             <a class="nav-link" href="/shironime/preguntadiaria">PREGUNTA DIARIA</a>

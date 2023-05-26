@@ -101,6 +101,15 @@ class FrontController{
                     }
                     , 'get');
                     
+                //Entrar a la pregunta diaria
+                Route::add('/shironime/preguntadiaria', 
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\PreguntaDiariaController;
+                        $controlador->iniciarPregunta();
+                    }
+                    , 'get');
+                    
+                //Cerrar sesión
                 Route::add('/logout', 
                     function(){
                         $controlador = new \Com\Daw2\Controllers\UsersController();

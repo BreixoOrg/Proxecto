@@ -1,0 +1,39 @@
+
+    /*ESTILOS PROPIOS DE LA PÁGINA PREGUNTAS*/
+
+    .descripcionVerAnime{/*Tambien se encunetra en las descripciones de los animes, por lo que plantearse hacer que sea una clase común*/
+        border: 5px solid #ac6291;/*Revisar color en casa para que coincida con la paleta*/
+        background-color: #e6cadf;
+    }
+
+    .imgPregunta{
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .inputPerso{
+        cursor: pointer;
+    }
+
+    section{
+        min-width: 90%;
+        margin: auto;
+    }
+    
+    main{
+        background-image: url("../img/sakura-japones.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .miModal{/*MODAL QUE CREO QUE SERÁ PARA TODOS IGUAL*/
+        z-index: 2000;
+        position: absolute;
+
+        max-width: 700px;
+        max-height: 300px ;
+
+    }

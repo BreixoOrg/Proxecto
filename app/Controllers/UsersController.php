@@ -90,6 +90,7 @@ class UsersController extends \Com\Daw2\Core\BaseController{
             $this->view->showViews(array('loginAndRegister.view.php') , $data);
         }
     }
+        
     
     //ya dejamos la funcion de logout hecha
     function logout(){

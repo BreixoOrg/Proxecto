@@ -11,6 +11,7 @@ class AnimeController extends \Com\Daw2\Core\BaseController {
     public function index() {
         
         $data = [];
+        //cargar css
         $data['styles'] = [
             0 =>"/assets/css/headerAndFooter.css",
             1 => "/assets/css/shironime.css"
@@ -93,12 +94,11 @@ class AnimeController extends \Com\Daw2\Core\BaseController {
             //llamamos al modelo de Animes
             $modelAnime =  new \Com\Daw2\Models\AnimeModel();
             
+            //si existe el anime lo mostramos, sino volvemos al index
             if($modelAnime->existeAnime($idAnime)){
                 $ultimosAnimes = $modelAnime->obtenerAnime($idAnime);
             
                 $data['animesMostrar'] = $ultimosAnimes;
-                
-                var_dump($data['animesMostrar']);
 
                 $this->view->showViews(array('templates/headerShiro.view.php','/verCapsAnime.view.php','templates/footerShiro.view.php'), $data);  
             }

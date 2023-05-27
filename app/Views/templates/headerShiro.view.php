@@ -20,11 +20,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $styles[$y] ?>">
     <?php } ?>
     
-    <!-- Header AND Footer CSS -->
-    <link rel="stylesheet" href="assets/css/headerAndFooter.css">
-
-    <!--CSS Main-->
-    <link rel="stylesheet" href="assets/css/shironime.css">
+    
 
 </head>
 
@@ -73,3 +69,18 @@
     </header>
     
 <main class=" mt-2 mb-2 rounded container bg-white p-3">
+    
+    <?php if(isset($_SESSION['mostrarDialog'])) { ?>
+    
+    <dialog class="miModal alert container" id="dialogWindow" open>
+
+        <div class="row d-flex justify-content-around">
+          <span class="col-10 fs-5"><span class="text-<?php echo $_SESSION['mostrarDialog']['isExito'] === true  ? 'success' : 'danger' ?>"><?php echo $_SESSION['mostrarDialog']['txtColor'] ?></span><?php echo $_SESSION['mostrarDialog']['txtNormal'] ?></span>
+          <button type="button" class="btn-close col-1" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+    </dialog>
+    
+    <?php
+    unset($_SESSION['mostrarDialog']);    
+    } ?>

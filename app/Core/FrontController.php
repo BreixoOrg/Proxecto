@@ -101,6 +101,14 @@ class FrontController{
                     }
                     , 'get');
                     
+                //Entrar a ver un cíputlo en concreto de una serie
+                Route::add('/shironime/verCap', 
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\CapitulosController();
+                        $controlador->mostrarCap();
+                    }
+                    , 'get');
+                    
                 //Entrar a la pregunta diaria
                 Route::add('/shironime/preguntadiaria', 
                     function(){
@@ -108,6 +116,15 @@ class FrontController{
                         $controlador->iniciarPregunta();
                     }
                     , 'get');
+                    
+                    
+                //Procesar la respuesta de la pregunta diaria
+                Route::add('/shironime/preguntadiaria', 
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\PreguntaDiariaController;
+                        $controlador->comprobarPregunta();
+                    }
+                    , 'post');
                     
                 //Cerrar sesión
                 Route::add('/logout', 

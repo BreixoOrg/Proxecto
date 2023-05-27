@@ -71,4 +71,17 @@ class UsersModel extends \Com\Daw2\Core\BaseModel {
         ]);
     }
     
+    //Devuelve TRUE en caso de que pudiese actualizar la cantidad de shirocoins del usuario o FALSE en caso contrario
+    function actualizarShirocoins($username,$shirocoins){
+        
+        $sql = "UPDATE usuario SET shirocoin=:shirocoins WHERE username=:username AND baja = 0";
+        
+        $stmt = $this->pdo->prepare($sql);
+        
+        return $stmt->execute([
+            "shirocoins" => $shirocoins,
+            "username" => $username
+        ]);
+    }
+    
 }

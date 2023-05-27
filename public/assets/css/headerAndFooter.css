@@ -39,3 +39,17 @@
     .bgFooter{
         background-color: #e6cadf;
     }
+    
+    
+/*MODAL PARA LOS AVISOS*/
+    .miModal{
+        z-index: 2000;
+        position: absolute;
+
+        max-width: 700px;
+        max-height: 300px ;
+        
+        border: 5px solid #ac6291;/*Revisar color en casa para que coincida con la paleta*/
+        background-color: #e6cadf;
+
+    }

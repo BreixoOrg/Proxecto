@@ -1,0 +1,59 @@
+/*ESTILOS DEL REPRODUCTOR*/
+
+    /*Le da un ancho mínimo al main*/
+    main{
+        min-height: 80vh;
+    }
+
+    /*Ajusta el alto del section al main*/
+    section{
+        min-height: 100%;
+    }
+
+    video{
+        max-width: 700px;
+        aspect-ratio: 16/9;
+        }
+
+    /*Estilo para los botones de navegacián de los capítulos*/
+    .btCaps{
+        background-color: #22222b;
+        margin: 10px 5px;
+    }
+
+    /*Estilos para los enlaces dentro de los botones*/
+    .btCaps a{
+        color: white;
+        padding: 10px 5px;
+        text-decoration: none;
+    }
+
+    /*Lo utilizo para la caja de comentarios*/
+    .descripcionVerAnime{
+        border: 5px solid #ac6291;/*Revisar color en casa para que coincida con la paleta*/
+        background-color: #e6cadf;
+    }
+
+    /*Lo utilizo para la caja de comentarios que pertenece al usuario*/
+    .descripcionVerAnime2{
+        border: 5px solid #ac6291;/*Revisar color en casa para que coincida con la paleta*/
+        background-color: #ece7eb;
+    }
+
+    /*Estilo para el texto de los comentarios*/
+    .txtImprenta{
+        text-align: justify;
+        font-size: 14px;
+    }
+
+    /*Botón de cargar comentarios*/
+    .btnComents{
+        background-color: #434351;
+        color: white;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    
+    .btnComents:hover{
+        box-shadow: 5px 10px #22222b;
+    }

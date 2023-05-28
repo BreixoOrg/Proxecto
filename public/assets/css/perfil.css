@@ -1,0 +1,11 @@
+/*ESTILOS DEL PERFIL*/
+
+/*para el formulario*/
+.descripcionVerAnime{
+    border: 5px solid #ac6291;/*Revisar color en casa para que coincida con la paleta*/
+    background-color: #e6cadf;
+}
+
+section{
+    margin-top: 15vh;
+}

@@ -58,6 +58,7 @@
                             <?php echo isset($_SESSION['usuario']['username']) ? $_SESSION['usuario']['username'] : 'USER' ?>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-start dropdown-menu-md-end" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="/shironime/perfil">Perfil</a></li>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             <li class="dropdown-item">Shirocoins: <?php echo isset($_SESSION['usuario']['shirocoin']) ? $_SESSION['usuario']['shirocoin'] : 'NO-ENCONTRADO' ?></li>
                         </ul>

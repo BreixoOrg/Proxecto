@@ -92,6 +92,23 @@ class UsersController extends \Com\Daw2\Core\BaseController{
     }
         
     
+    function perfil(){
+        
+        $data = [];
+        $data['styles'] = [
+            0 =>"../assets/css/headerAndFooter.css",
+            1 => "../assets/css/perfil.css"
+        ];
+        
+        $this->view->showViews(array('templates/headerShiro.view.php','/perfil.view.php','templates/footerShiro.view.php'), $data); 
+    }
+    
+    function darseBaja(){
+        $modelUser = new \Com\Daw2\Models\UsersModel();
+        $modelUser->darseBaja($_SESSION['usuario']['username']);
+        $this->logout();
+    }
+    
     //ya dejamos la funcion de logout hecha
     function logout(){
         session_destroy();

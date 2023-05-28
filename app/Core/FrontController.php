@@ -126,6 +126,31 @@ class FrontController{
                     }
                     , 'post');
                     
+                    
+                //Escribir comentario
+                Route::add('/shironime/comentario', 
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\ComentarioController;
+                        $controlador->escribirComentario();
+                    }
+                    , 'post');
+                    
+                //Perfil
+                Route::add('/shironime/perfil', 
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\UsersController;
+                        $controlador->perfil();
+                    }
+                    , 'get');
+                    
+                //Darse de baja
+                Route::add('/darseBaja', 
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\UsersController;
+                        $controlador->darseBaja();
+                    }
+                    , 'get');
+                    
                 //Cerrar sesión
                 Route::add('/logout', 
                     function(){

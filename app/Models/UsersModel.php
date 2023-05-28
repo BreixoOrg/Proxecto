@@ -84,4 +84,14 @@ class UsersModel extends \Com\Daw2\Core\BaseModel {
         ]);
     }
     
+    function darseBaja($username){
+        $sql = "UPDATE usuario SET baja=1 WHERE username=:username";
+        
+        $stmt = $this->pdo->prepare($sql);
+        
+        return $stmt->execute([
+            "username" => $username
+        ]);
+    }
+    
 }

@@ -21,7 +21,7 @@ class CapitulosController extends \Com\Daw2\Core\BaseController {
         //comprobar que nos pasan parámetros válidos
         if($this->checkCapituloIdserie($_GET)){
             
-            //llamamos al modelo
+            //llamamos al modelo de los capítulos
             $modelCapitulos = new \Com\Daw2\Models\CapitulosModel();
             
             //obtenemos el número de capítulos totales
@@ -40,6 +40,14 @@ class CapitulosController extends \Com\Daw2\Core\BaseController {
                     
                     
                     //QUEDA HACER LA PARTE DE LOS COMENTARIOS
+                    //llamamos al modelo de los comentarios
+                    $modelComentarios = new \Com\Daw2\Models\ComentarioModel();
+                    $coments = $modelComentarios->comentariosRecientes($_GET['idSerie'], $_GET['capitulo']);
+                    
+                    if(!is_null($coments)){
+                        $data['coments'] = $coments; 
+                    }
+                    
                     
                 }
                 else{
@@ -59,7 +67,6 @@ class CapitulosController extends \Com\Daw2\Core\BaseController {
             header('location: /shironime');
         }
         
-        var_dump($data);
                 
         $this->view->showViews(array('templates/headerShiro.view.php','/reproducirCapAnime.view.php','templates/footerShiro.view.php'), $data); 
     }

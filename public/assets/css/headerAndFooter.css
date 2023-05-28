@@ -15,6 +15,10 @@
     header{
         background-color: #ac6291;
     }
+    
+    main{
+        min-height: 80vh;
+    }
 
     /*Fondo de la página*/
     .bgBody{

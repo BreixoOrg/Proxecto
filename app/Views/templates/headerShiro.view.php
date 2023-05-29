@@ -42,7 +42,7 @@
                             <a class="nav-link active" aria-current="page" href="/shironime">ANIME</a>
                         </li>
                         <li class="nav-item navRemark rounded">
-                            <a class="nav-link" href="/shironime/canjear">CANJEAR SHIROCOINS</a>
+                            <a class="nav-link" href="/shironime/comprar">CANJEAR SHIROCOINS</a>
                         </li>
                         <li class="nav-item navRemark rounded">
                             <a class="nav-link" href="/shironime/preguntadiaria">PREGUNTA DIARIA</a>

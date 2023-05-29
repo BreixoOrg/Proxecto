@@ -91,23 +91,28 @@ class PreguntaDiariaController extends \Com\Daw2\Core\BaseController {
                     
                     //Devolver dialog con mensaje de éxito
                     $txtNormal = ' ganaste ' . $_SESSION['premio'] . ' Shirocoins';
-                    $this->showDialog( true, 'FELICIDADES!', $txtNormal);
+                    
+                    $errorModel = new \Com\Daw2\Controllers\ErroresController();
+                    $errorModel->showDialog( true, 'FELICIDADES!', $txtNormal);
                     
                 }
                 else{
                     //Devolver dialog con mensaje
-                    $this->showDialog(false, 'ERROR:', ' No se pudo actualizar sus Shirocoins');
+                    $errorModel = new \Com\Daw2\Controllers\ErroresController();
+                    $errorModel->showDialog(false, "ERROR: ", "No se pudo completar la transacción");
                 }
                 
             }
             else{
                 //Mostrar dialog con mensaje
-                $this->showDialog(false, 'Que lástima, ', 'no acertó la pregunta');
+                $errorModel = new \Com\Daw2\Controllers\ErroresController();
+            $errorModel->showDialog(false, "ERROR: ", "No se pudo completar la transacción");
             }
         }
         else{
             //Respuesta no válida, mostrar mensaje dialog
-            $this->showDialog(false, 'ERROR:', ' No se pudo validar, vuelva a intentarlo mañana');
+            $errorModel = new \Com\Daw2\Controllers\ErroresController();
+            $errorModel->showDialog(false, "ERROR: ", "No se pudo completar la transacción");
         }
         
         //Eliminamos estas variables de SESSION ay que ya no harán falta
@@ -118,12 +123,6 @@ class PreguntaDiariaController extends \Com\Daw2\Core\BaseController {
         header("location: /shironime");
     }
     
-    //Rellena la variable $_SESSION con los campo s necesarios para mostrar el dialog
-    private function showDialog(bool $isExito, string $txtColor, string $txtNormal){
-        $_SESSION['mostrarDialog']['isExito'] = $isExito;
-        $_SESSION['mostrarDialog']['txtColor'] = $txtColor;
-        $_SESSION['mostrarDialog']['txtNormal'] = $txtNormal;
-    }
     
     //Devuelve TRUE en caso de que el ultimo dia que participo no es el de hoy o FALSE si ya participó el día de hoy
     private function checkFechaParticipar($ultimaPregRespond) {

@@ -18,4 +18,12 @@ class ErroresController extends \Com\Daw2\Core\BaseController {
        
        $this->view->showViews(array('templates/header.view.php', 'error.php', 'templates/footer.view.php') , $data);
     }
+    
+    //Rellena la variable $_SESSION con los campo s necesarios para mostrar el dialog
+    function showDialog(bool $isExito, string $txtColor, string $txtNormal){
+        $_SESSION['mostrarDialog']['isExito'] = $isExito;
+        $_SESSION['mostrarDialog']['txtColor'] = $txtColor;
+        $_SESSION['mostrarDialog']['txtNormal'] = $txtNormal;
+    }
+    
 }

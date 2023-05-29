@@ -151,6 +151,41 @@ class FrontController{
                     }
                     , 'get');
                     
+                //Para renovar la subscripción. Aprochechamos la vista del formulario de pago
+                Route::add('/renovarSub',
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\SubController();
+                        $controlador->pago();
+                    }
+                    , 'get');
+                    
+                /*Lo enviamos a la misma ruta que como si fuese el de pagar pero saltará un proceso de UPDATE*/
+                Route::add('/buySub',
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\SubController();
+                        $controlador->renovarProcess();
+                    }
+                    , 'post');
+                    
+                    
+                //Mustra la vista para canjear las shirocoins o para renovar la subscripción
+                Route::add('/shironime/comprar',
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\SubController();
+                        $controlador->showCanjear();
+                    }
+                    , 'get');
+                    
+                //Canjear shirocoins
+                Route::add('/shironime/canjear',
+                    function(){
+                        $controlador = new \Com\Daw2\Controllers\SubController();
+                        $controlador->canjearShirocoins();
+                    }
+                    , 'get');
+                
+                    
+                    
                 //Cerrar sesión
                 Route::add('/logout', 
                     function(){

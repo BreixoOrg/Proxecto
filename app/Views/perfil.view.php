@@ -41,12 +41,12 @@
         </div>
 
         <div class="row col-10 mb-3 d-flex justify-content-center justify-content-md-between">
-            <form action='#' class="row col-12 col-md-6 mb-3">
-                <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ampliar subscripción</button>
+            <form action='/renovarSub' class="row col-12 col-md-6 mb-3">
+                <button type="submit" class="btn btn-primary col-12">Ampliar subscripción</button>
             </form>
 
             <form action='/darseBaja' class="row col-12 col-md-6 mb-3">
-                <button type="button" class="btn btn-danger col-12" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Darse de baja</button>
+                <button type="submit" class="btn btn-danger col-12" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Darse de baja</button>
 
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

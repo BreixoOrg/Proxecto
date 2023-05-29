@@ -14,6 +14,13 @@ class SubController extends \Com\Daw2\Core\BaseController{
         "3" => 12
     ];
     
+    //Array con clave=valorGet y valor=semanas
+    private const PLAN_SHIROCOINS = [
+        "300" => 1,
+        "550" => 2,
+        "1000" => 4
+    ];
+    
     private const CVV_NUM_DIGIT_MIN = 3;
     private const CVV_NUM_DIGIT_MAX = 4;
     
@@ -53,6 +60,101 @@ class SubController extends \Com\Daw2\Core\BaseController{
         }
         
     }
+    
+    
+    //Proceso del formulario de pago pero en este se hace UPDATE de la fecha de SUB, sino la reescribe perdiendo dias de la misma
+    function renovarProcess(){
+        
+        $data = [];
+        
+        $data['input'] = filter_var_array($_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+        
+        //Comprobamos que todos los datos sean correctos
+        $errores = $this->checkDatosTargeta($_POST);
+        
+        if(count($errores) == 0){
+        
+            //Procedemos a canjear el plan de pago
+            $modelSub = new \Com\Daw2\Models\SubModel();
+            $pagoCorrecto = $modelSub->renovarOk($_SESSION['usuario']['username'], self::PLAN_PAGO[$_POST['radioPlanPago']]);
+            
+            if($pagoCorrecto){
+                //Todo correcto
+                header("location: /shironime");
+            }else{
+                //Falló
+                $this->view->showViews(array('buySub.view.php'),$data);
+               
+            }
+        }else{
+            
+                $data['errores'] = $errores;
+            $this->view->showViews(array('buySub.view.php'),$data);
+        }
+        
+    }
+    
+    
+    //ZONA DE CANJEAR LAS SHIROCOINS
+    
+    function showCanjear() {
+        $data = [];
+        //cargar css
+        $data['styles'] = [
+            0 =>"../assets/css/headerAndFooter.css",
+        ];
+        
+        $this->view->showViews(array('templates/headerShiro.view.php','/canjearShirocoinsRenovarSub.view.php','templates/footerShiro.view.php'),$data); 
+    }
+    
+    function canjearShirocoins(){
+        
+        $data = [];
+        
+        $isOk = $this->checkChangeShirocoins($_GET);
+        
+        if($isOk){
+        
+            //Procedemos a canjear las shirocoins
+            $modelSub = new \Com\Daw2\Models\SubModel();
+            $pagoCorrecto = $modelSub->renovarOk($_SESSION['usuario']['username'], self::PLAN_SHIROCOINS[$_GET['shirocoins']]);
+            
+            if($pagoCorrecto){
+                //Todo correcto
+                $this->showDialog(false, "FELICIDADES! ", "Renovación exitosa");
+                header("location: /shironime");
+            }else{
+                //Falló
+                $errorModel = new \Com\Daw2\Controllers\ErroresController();
+                $errorModel->showDialog(false, "ERROR: ", "No se pudo completar la transacción");
+                header("location: /shironime");
+               
+            }
+        }else{
+            //Falló
+            $errorModel = new \Com\Daw2\Controllers\ErroresController();
+            $errorModel->showDialog(false, "ERROR: ", "No se pudo completar la transacción");
+            header("location: /shironime");
+        }
+        
+    }
+    
+    
+    //Comprueba que el plan de pago el válido y que el usuario puede permitírselo
+    private function checkChangeShirocoins($get){
+        
+        if(!isset($get['shirocoins']) || empty($get['shirocoins']) || !array_key_exists($get['shirocoins'], self::PLAN_SHIROCOINS)){
+            return false;
+        }
+        
+        if($_SESSION['usuario']['shirocoin'] < $get['shirocoins']){
+            return false;
+        }
+        
+        return true;
+        
+    }
+    
     
     //Comprueba que el formulario de pago con targeta esté correcto
     //Devuelve un array con los campos y sus errores. Si está vacío significa que no existen errores.

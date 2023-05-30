@@ -1,6 +1,6 @@
 body {
     overflow: hidden;
-    background-image: url("../img/nublado-cumulo-paisaje-neblina.jpg");
+    background-image: url("../img/nubes-rosas.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
@@ -51,8 +51,8 @@ a {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
+	border: 1px solid #434351;
+	background-color: #434351;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -162,10 +162,10 @@ input {
 }
 
 .overlay {
-    background-image: url("../img/chica-pelo-rosa-guitarra-camiseta.jpg");
+    background-image: url("../img/violet-rain.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: 100px 0;
+	background-position: -100px 0;
 	color: #FFFFFF;
 	position: relative;
 	left: -100%;

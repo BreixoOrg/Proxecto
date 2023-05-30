@@ -43,6 +43,13 @@
     .bgFooter{
         background-color: #e6cadf;
     }
+
+    .linksFooter{
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
     
     
 /*MODAL PARA LOS AVISOS*/
@@ -56,4 +63,59 @@
         border: 5px solid #ac6291;/*Revisar color en casa para que coincida con la paleta*/
         background-color: #e6cadf;
 
+    }
+
+/*ESTILOS DE USO EN DIFERENTES PAGINAS*/
+
+    /*colores de fondo de oscuro a claro*/
+    .bg-oscuro2{
+        background-color: #22222b;
+    }
+
+    .bg-oscuro1{
+        background-color: #434351;
+    }
+
+    .bg-normal{
+        background-color: #ac6291;
+    }
+
+    .bg-claro1{
+        background-color: #e6cadf;
+    }
+
+    .bg-claro2{
+        background-color: #ece7eb;
+    }
+
+    /*diseños de input*/
+    .input-type1{
+        background-color: #ac6291;
+        border: none;
+    }
+
+    .input-type1:hover{
+        background-color: #434351;
+    }
+
+
+    .input-type2{
+        background-color: #434351;
+        border: none;
+    }
+
+    .input-type2:hover{
+        background-color: #e6cadf;
+        color: black !important;
+    }
+
+
+    .input-type3{
+        background-color: #22222b;
+        border: none;
+    }
+
+    .input-type3:hover{
+        background-color: #e6cadf;
+        color: black !important;
     }

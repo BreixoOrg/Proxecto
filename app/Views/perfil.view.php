@@ -42,22 +42,22 @@
 
         <div class="row col-10 mb-3 d-flex justify-content-center justify-content-md-between">
             <form action='/renovarSub' class="row col-12 col-md-6 mb-3">
-                <button type="submit" class="btn btn-primary col-12">Ampliar subscripción</button>
+                <button type="submit" class="btn btn-primary input-type1 col-12">Ampliar subscripción</button>
             </form>
 
             <form action='/darseBaja' class="row col-12 col-md-6 mb-3">
-                <button type="submit" class="btn btn-danger col-12" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Darse de baja</button>
+                <button type="button" class="btn btn-danger col-12" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Darse de baja</button>
 
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                  <div class="modal-dialog">
+                  <div class="modal-dialog bg-oscuro2">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Está seguro que quiere darse de baja?</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-footer d-flex justify-content-between">
-                        <button type="button" class="col-12 col-md-5 btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="col-12 col-md-5 btn btn-secondary input-type1" data-bs-dismiss="modal">Cerrar</button>
                         <button type="submit" class="col-12 col-md-5 btn btn-danger">Si, quiero darme de baja</button>
                       </div>
                     </div>

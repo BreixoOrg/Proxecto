@@ -1,7 +1,7 @@
-<div class="row">  
-    <div class="col-12">
-        <div class="alert alert-danger">
-            <?php echo $texto; ?>
-        </div>
+<section class="container mt-5">
+
+    <div class="row">
+      <p class="text-center fs-2 bg-danger"><?php echo $texto; ?></p>
     </div>
-</div>
+
+</section>

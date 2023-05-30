@@ -50,10 +50,10 @@
                     </ul>
                     <form action="/shironime/search" method="post" class="d-flex mb-2">
                         <input class="form-control me-2" name="animeNameToSearch" type="search" value="<?php echo isset($stringBusqueda) ? $stringBusqueda : "" ?>" placeholder="Qué buscas..." aria-label="Search">
-                        <button class="btn btSearch text-white" type="submit">Buscar</button>
+                        <button class="btn btSearch text-white input-type2" type="submit">Buscar</button>
                     </form>
                     <div class="dropdown dropdown-menu-right mb-2 ">
-                        <button class="btn btPerfil text-white" type="button" id="dropdownMenuButton1"
+                        <button class="btn btPerfil text-white input-type3" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <?php echo isset($_SESSION['usuario']['username']) ? $_SESSION['usuario']['username'] : 'USER' ?>
                         </button>

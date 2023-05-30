@@ -4,13 +4,21 @@
         <div class="row d-flex justify-content-around">
             <div class="col-4">
                 <h2>SHIRONIME</h2>
-                <p>Tú página de anime de confianza.</p>
-                <p>Diviértete viendo los mejores animes.</p>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-claro1">Tú página web de Anime de confianza.</li>
+                    <li class="list-group-item bg-claro1">Aquí te dejamos nuestra informaciónde contacto por si quieres subir una obra o por cualquier incidencia.</li>
+                    <li class="list-group-item bg-claro1"><a class="linksFooter" href="tel:+34674453842">&#x2706; 674453842</a></li>
+                    <li class="list-group-item bg-claro1"><a class="linksFooter" href="mailto:shironime262@gmail.com">&#128231; shironime262@gmail.com</a></li>
+                </ul>
             </div>
             <div class="col-4">
                 <h2>PRIVACIDAD</h2>
-                <p>Tú página de anime de confianza.</p>
-                <p>Diviértete viendo los mejores animes.</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-claro1">Todas las imágenes y vídeos fueron suministradas por pixabay.</li>
+                    <li class="list-group-item bg-claro1">No nos hacemos responsables de la información compartida.</li>
+                    <li class="list-group-item bg-claro1">El usuario es 100% responsable de sus acciones.</li>
+                    <li class="list-group-item bg-claro1">Nos comprometemos a mantener tú informacióna salvo.</li>
+                </ul>
             </div>
         </div>
     </div>

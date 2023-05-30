@@ -57,12 +57,12 @@
                         <div class="overlay" id="overlay">
                             <div class="overlay-panel overlay-left">
                                 <h1>Bienvenido de nuevo</h1>
-                                <p>Inicia sesión para poder disfrutar de los mejores episodios de anime</p>
+                                <p class="fw-bold">Inicia sesión para poder disfrutar de los mejores episodios de anime</p>
                                 <button class="ghost" id="iniciarSesion">Iniciar sesión</button>
                             </div>
                             <div class="overlay-panel overlay-right">
                                 <h1>Saludos desconocido</h1>
-                                <p>Registrate ya para disfrutar de todo el contenido de anime que desees</p>
+                                <p class="fw-bold">Registrate ya para disfrutar de todo el contenido de anime que desees</p>
                                 <button class="ghost" id="registrarse">Registrarse</button>
                             </div>
                         </div>
@@ -80,14 +80,14 @@
 
         signUpButton.addEventListener('click', () => {
             container.classList.add("right-panel-active");
-            overlay.style.backgroundImage = 'url("../assets/img/chica-pelo-largo-negro-blusa-blanca-fondo-morado")';
+            overlay.style.backgroundImage = 'url("../assets/img/girl-see-sea.jpg")';
             overlay.style.backgroundPosition = "-60px 0";
         });
 
         signInButton.addEventListener('click', () => {
             container.classList.remove("right-panel-active");
-            overlay.style.backgroundImage = 'url("../assets/img/chica-pelo-rosa-guitarra-camiseta")';
-            overlay.style.backgroundPosition = "100px 0";
+            overlay.style.backgroundImage = 'url("../assets/img/violet-rain.jpg")';
+            overlay.style.backgroundPosition = "-100px 0";
         });
     </script>
 

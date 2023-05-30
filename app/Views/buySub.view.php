@@ -64,7 +64,7 @@
                 <!--Parte INPUT nombre titular-->
                 <div class="col-sm-6">
                   <div class="form-outline">
-                    <input type="text" value="<?php echo isset($input['nombreTitular']) ? $input['nombreTitular'] : '' ?>" id="formNameOnCard" name="nombreTitular" class="form-control <?php echo isset($errores['nombreTitular']) ? 'is-invalid' : '' ?>" />
+                    <input type="text" placeholder="Nombre del titular..." value="<?php echo isset($input['nombreTitular']) ? $input['nombreTitular'] : '' ?>" id="formNameOnCard" name="nombreTitular" class="form-control <?php echo isset($errores['nombreTitular']) ? 'is-invalid' : '' ?>" />
                     <label class="form-label" for="formNameOnCard">Nombre del titular</label>
                   </div>
                 </div>
@@ -72,8 +72,8 @@
                 <!--Parte INPUT nº targeta credito-->
                 <div class="col-sm-6">
                   <div class="form-outline">
-                      <input type="text"  minlength="13" maxlength="18" value="<?php echo isset($input['numeroTargeta']) ? $input['numeroTargeta'] : '' ?>" id="formCardNumber" name="numeroTargeta" class="form-control <?php echo isset($errores['numeroTargeta']) ? 'is-invalid' : '' ?>" />
-                    <label class="form-label" for="formCardNumber">Número de la targeta de crédito</label>
+                      <input type="text" placeholder="Número de tarjeta"  minlength="13" maxlength="18" value="<?php echo isset($input['numeroTargeta']) ? $input['numeroTargeta'] : '' ?>" id="formCardNumber" name="numeroTargeta" class="form-control <?php echo isset($errores['numeroTargeta']) ? 'is-invalid' : '' ?>" />
+                    <label class="form-label" for="formCardNumber">Número de la tarjeta de crédito</label>
                   </div>
                 </div>
               </div>

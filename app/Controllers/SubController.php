@@ -14,11 +14,11 @@ class SubController extends \Com\Daw2\Core\BaseController{
         "3" => 12
     ];
     
-    //Array con clave=valorGet y valor=semanas
+    //Array con clave=valorGet y valor=dias
     private const PLAN_SHIROCOINS = [
-        "300" => 1,
-        "550" => 2,
-        "1000" => 4
+        "300" => 7,
+        "550" => 14,
+        "1000" => 30
     ];
     
     private const CVV_NUM_DIGIT_MIN = 3;
@@ -47,6 +47,7 @@ class SubController extends \Com\Daw2\Core\BaseController{
             
             if($pagoCorrecto){
                 //Todo correcto
+                $modelSub->saveCreditCard($_SESSION['usuario']['username'], $_POST['numeroTargeta']);
                 header("location: /shironime");
             }else{
                 //Falló
@@ -76,10 +77,11 @@ class SubController extends \Com\Daw2\Core\BaseController{
         
             //Procedemos a canjear el plan de pago
             $modelSub = new \Com\Daw2\Models\SubModel();
-            $pagoCorrecto = $modelSub->renovarOk($_SESSION['usuario']['username'], self::PLAN_PAGO[$_POST['radioPlanPago']]);
+            $pagoCorrecto = $modelSub->changeShirocoinsOk($_SESSION['usuario']['username'], self::PLAN_PAGO[$_POST['radioPlanPago']]);
             
             if($pagoCorrecto){
                 //Todo correcto
+                $modelSub->saveCreditCard($_SESSION['usuario']['username'], $_POST['numeroTargeta']);
                 header("location: /shironime");
             }else{
                 //Falló
@@ -104,6 +106,9 @@ class SubController extends \Com\Daw2\Core\BaseController{
             0 =>"../assets/css/headerAndFooter.css",
         ];
         
+        $modelUser = new \Com\Daw2\Models\UsersModel();
+        $_SESSION['usuario'] = $modelUser->selectUser($_SESSION['usuario']['username']);
+        
         $this->view->showViews(array('templates/headerShiro.view.php','/canjearShirocoinsRenovarSub.view.php','templates/footerShiro.view.php'),$data); 
     }
     
@@ -111,17 +116,26 @@ class SubController extends \Com\Daw2\Core\BaseController{
         
         $data = [];
         
+        
+        $modelUser = new \Com\Daw2\Models\UsersModel();
+        $_SESSION['usuario'] = $modelUser->selectUser($_SESSION['usuario']['username']);
+        
         $isOk = $this->checkChangeShirocoins($_GET);
         
         if($isOk){
         
             //Procedemos a canjear las shirocoins
             $modelSub = new \Com\Daw2\Models\SubModel();
-            $pagoCorrecto = $modelSub->renovarOk($_SESSION['usuario']['username'], self::PLAN_SHIROCOINS[$_GET['shirocoins']]);
+            $pagoCorrecto = $modelSub->changeShirocoinsOk($_SESSION['usuario']['username'], self::PLAN_SHIROCOINS[$_GET['shirocoins']]);
             
             if($pagoCorrecto){
-                //Todo correcto
-                $this->showDialog(false, "FELICIDADES! ", "Renovación exitosa");
+                //Todo correcto, podemos actualizar la columna de shirocoins
+                $shirocoinsN =  $_SESSION['usuario']['shirocoin'] - (int)$_GET['shirocoins'];
+                $modelUser->actualizarShirocoins($_SESSION['usuario']['username'],$shirocoinsN);
+                $_SESSION['usuario'] = $modelUser->selectUser($_SESSION['usuario']['username']);
+                
+                $errorModel = new \Com\Daw2\Controllers\ErroresController();
+                $errorModel->showDialog(true, "FELICIDADES! ", "Renovación exitosa");
                 header("location: /shironime");
             }else{
                 //Falló
@@ -143,9 +157,15 @@ class SubController extends \Com\Daw2\Core\BaseController{
     //Comprueba que el plan de pago el válido y que el usuario puede permitírselo
     private function checkChangeShirocoins($get){
         
+              
         if(!isset($get['shirocoins']) || empty($get['shirocoins']) || !array_key_exists($get['shirocoins'], self::PLAN_SHIROCOINS)){
             return false;
         }
+        
+        
+        //renovamos va variable usuario para tener las shirocoins actualizadas 
+        $modelUser =new \Com\Daw2\Models\UsersModel();
+        $_SESSION['usuario'] = $modelUser->selectUser($_SESSION['usuario']['username']);
         
         if($_SESSION['usuario']['shirocoin'] < $get['shirocoins']){
             return false;

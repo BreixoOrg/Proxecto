@@ -60,6 +60,20 @@ class UsersModel extends \Com\Daw2\Core\BaseModel {
         return $stmt->fetchAll()[0];
     }
     
+    //Selecciona los datos de un usuario pasándole un USERNAME
+    function updateShirocoins(int $shirocoins,string $username){
+        $sql = "UPDATE usuario set shirocoin = :shirocoins where username = :username and baja=0";
+        
+        $stmt = $this->pdo->prepare($sql);
+        
+        $stmt->execute([
+            "shirocoins" => $shirocoins,
+            "username" => $username
+        ]);
+        
+        return $stmt->fetchAll()[0];
+    }
+    
     //Devuelve TRUE en caso de que pudiese actualizar la fecha del usuario o FALSE en caso contrario
     function actualizarDiaPregDiaria($username){
         $sql = "UPDATE usuario SET ultimaPregRespond=NOW() WHERE username=:username AND baja = 0";

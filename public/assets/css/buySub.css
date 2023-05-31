@@ -7,7 +7,7 @@ body{
 }
 
 .card-body{
-    background-image: url(../img/sub3Meses.jpg);
+    background-image: url("/assets/img/sub3Meses.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     color: white;

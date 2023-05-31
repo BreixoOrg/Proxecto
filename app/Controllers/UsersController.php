@@ -100,6 +100,9 @@ class UsersController extends \Com\Daw2\Core\BaseController{
             1 => "../assets/css/perfil.css"
         ];
         
+        $modelUser = new \Com\Daw2\Models\UsersModel();
+        $_SESSION['usuario'] = $modelUser->selectUser($_SESSION['usuario']['username']);
+        
         $this->view->showViews(array('templates/headerShiro.view.php','/perfil.view.php','templates/footerShiro.view.php'), $data); 
     }
     

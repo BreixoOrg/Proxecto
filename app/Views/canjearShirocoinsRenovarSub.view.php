@@ -12,8 +12,8 @@
                   <div class="card">
                     <a href="/shironime/canjear?shirocoins=300"><img src="../assets/img/shirocoin1Semana.jpg" class="card-img-top" alt="..."></a>
                     <div class="card-body bg-claro2">
-                      <h5 class="card-title fs-2 text-center">1 SEMANA</h5>
-                      <p class="card-text">CAMBIA 300 SHIROCOINS POR 1 SEMANA</p>
+                      <h5 class="card-title fs-2 text-center">7 DÍAS</h5>
+                      <p class="card-text">CAMBIA 300 SHIROCOINS POR 7 DÍAS</p>
                       <div class="d-flex justify-content-end align-items-end">
                         <a class="btn btn-primary input-type1" href="/shironime/canjear?shirocoins=300" role="button">300 SC</a>
                       </div>
@@ -24,8 +24,8 @@
                   <div class="card">
                     <a href="/shironime/canjear?shirocoins=550"><img src="../assets/img/shirocoin2Semanas.jpg" class="card-img-top" alt="..."></a>
                     <div class="card-body bg-claro2">
-                      <h5 class="card-title fs-2 text-center">2 SEMANAS</h5>
-                      <p class="card-text">CAMBIA 550 SHIROCOINS POR 2 SEMANAS</p>
+                      <h5 class="card-title fs-2 text-center">14 DÍAS</h5>
+                      <p class="card-text">CAMBIA 550 SHIROCOINS POR 14 DÍAS</p>
                       <div class="d-flex justify-content-end align-items-end">
                         <a class="btn btn-primary input-type1" href="/shironime/canjear?shirocoins=550" role="button">550 SC</a>
                       </div>
@@ -36,8 +36,8 @@
                   <div class="card">
                   <a href="/shironime/canjear?shirocoins=1000"><img src="../assets/img/shirocoin1Mes.jpg" class="card-img-top" alt="..."></a>
                     <div class="card-body bg-claro2">
-                      <h5 class="card-title fs-2 text-center">1 MES</h5>
-                      <p class="card-text">CAMBIA 1000 SHIROCOINS POR 1 SEMANA</p>
+                      <h5 class="card-title fs-2 text-center">30 DÍAS</h5>
+                      <p class="card-text">CAMBIA 1000 SHIROCOINS POR 30 DÍAS</p>
                       <div class="d-flex justify-content-end align-items-end">
                         <a class="btn btn-primary input-type1" href="/shironime/canjear?shirocoins=1000" role="button">1000 SC</a>
                       </div>

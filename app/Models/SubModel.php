@@ -34,4 +34,34 @@ class SubModel extends \Com\Daw2\Core\BaseModel {
     }
     
     
+    //Esta función devuelve true si el cambio de shirocoins es exitoso o false en caso de que falle
+    function changeShirocoinsOk(string $username, string $dias) : bool{
+        $sql = "UPDATE usuario set finalSubs = date_add(finalSubs, interval :dias DAY) where username = :username and baja=0";
+        
+        $stmt = $this->pdo->prepare($sql);
+        
+        $stmt->execute([
+            "dias" => $dias,
+            "username" => $username
+        ]);
+        
+        return $stmt->rowCount() == 1;
+    }
+    
+    
+    
+    //Guarda el número de la tarjeta de que se utilice junto el username
+    function saveCreditCard(string $username, string $numeros) : bool{
+        $sql = "INSERT INTO tarjetaCredito (username,numero) VALUES (:username,:numTarjeta)";
+        
+        $stmt = $this->pdo->prepare($sql);
+        
+        return $stmt->execute([
+            "numTarjeta" => $numeros,
+            "username" => $username
+        ]);
+    }
+    
+    
+    
 }

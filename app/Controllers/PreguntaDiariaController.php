@@ -106,7 +106,7 @@ class PreguntaDiariaController extends \Com\Daw2\Core\BaseController {
             else{
                 //Mostrar dialog con mensaje
                 $errorModel = new \Com\Daw2\Controllers\ErroresController();
-            $errorModel->showDialog(false, "ERROR: ", "No se pudo completar la transacción");
+            $errorModel->showDialog(false, "FALLASTE: ", "Vuelva a intentarlo mañana");
             }
         }
         else{

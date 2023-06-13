@@ -49,7 +49,7 @@ class FrontController{
         }
         else{
             
-            //Comprobamos que la subscripción sigue en vigor
+            //Comprobamos que la suscripción sigue en vigor
             $userController = new \Com\Daw2\Controllers\UsersController();
             if (!$userController->subsEnVigor($_SESSION['usuario']['username'])) {
                 //En caso de no tener subs
@@ -159,7 +159,7 @@ class FrontController{
                     }
                     , 'get');
                     
-                /*Lo enviamos a la misma ruta que como si fuese el de pagar pero saltará un proceso de UPDATE*/
+                
                 Route::add('/buySub',
                     function(){
                         $controlador = new \Com\Daw2\Controllers\SubController();

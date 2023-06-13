@@ -9,7 +9,7 @@
   <video poster="<?php echo isset($capMostrar['rutaPortada']) ? $capMostrar['rutaPortada'] : "./nublado-cumulo-paisaje-neblina.jpg" ?>" controls preload="none">
     <source src="<?php echo isset($capMostrar['rutaAlmacenamiento']) ? $capMostrar['rutaAlmacenamiento'] : "error" ?><?php echo isset($capMostrar['nombreArch']) ? $capMostrar['nombreArch'] : "error" ?>.mp4" type="video/mp4">
     <source src="<?php echo isset($capMostrar['rutaAlmacenamiento']) ? $capMostrar['rutaAlmacenamiento'] : "error" ?><?php echo isset($capMostrar['nombreArch']) ? ucwords($capMostrar['nombreArch']) : "error" ?>.webm" type="video/webm">
-    <source src="<?php echo isset($capMostrar['rutaAlmacenamiento']) ? $capMostrar['rutaAlmacenamiento'] : "error" ?><?php echo isset($capMostrar['nombreArch']) ? ucwords($capMostrar['nombreArch']) : "error" ?>.webm" type="video/webm">
+    <source src="<?php echo isset($capMostrar['rutaAlmacenamiento']) ? $capMostrar['rutaAlmacenamiento'] : "error" ?><?php echo isset($capMostrar['nombreArch']) ? ucwords($capMostrar['nombreArch']) : "error" ?>.ogg" type="video/ogg">
   </video>
 </div>
 <!--<video src="./c1.mp4" controls autoplay width="640" height="480"></video>-->

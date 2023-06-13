@@ -47,7 +47,6 @@ class SubController extends \Com\Daw2\Core\BaseController{
             
             if($pagoCorrecto){
                 //Todo correcto
-                $modelSub->saveCreditCard($_SESSION['usuario']['username'], $_POST['numeroTargeta']);
                 header("location: /shironime");
             }else{
                 //Falló
@@ -77,11 +76,10 @@ class SubController extends \Com\Daw2\Core\BaseController{
         
             //Procedemos a canjear el plan de pago
             $modelSub = new \Com\Daw2\Models\SubModel();
-            $pagoCorrecto = $modelSub->changeShirocoinsOk($_SESSION['usuario']['username'], self::PLAN_PAGO[$_POST['radioPlanPago']]);
+            $pagoCorrecto = $modelSub->renovarOk($_SESSION['usuario']['username'], self::PLAN_PAGO[$_POST['radioPlanPago']]);
             
             if($pagoCorrecto){
                 //Todo correcto
-                $modelSub->saveCreditCard($_SESSION['usuario']['username'], $_POST['numeroTargeta']);
                 header("location: /shironime");
             }else{
                 //Falló

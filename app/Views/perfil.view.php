@@ -41,7 +41,7 @@
         </div>
 
         <div class="row col-10 mb-3 d-flex justify-content-center justify-content-md-between">
-            <form action='/renovarSub' class="row col-12 col-md-6 mb-3">
+            <form action='/renovarSub' method="get" class="row col-12 col-md-6 mb-3">
                 <button type="submit" class="btn btn-primary input-type1 col-12">Ampliar subscripción</button>
             </form>
 

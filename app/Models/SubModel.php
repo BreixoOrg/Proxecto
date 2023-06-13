@@ -50,17 +50,6 @@ class SubModel extends \Com\Daw2\Core\BaseModel {
     
     
     
-    //Guarda el número de la tarjeta de que se utilice junto el username
-    function saveCreditCard(string $username, string $numeros) : bool{
-        $sql = "INSERT INTO tarjetaCredito (username,numero) VALUES (:username,:numTarjeta)";
-        
-        $stmt = $this->pdo->prepare($sql);
-        
-        return $stmt->execute([
-            "numTarjeta" => $numeros,
-            "username" => $username
-        ]);
-    }
     
     
     

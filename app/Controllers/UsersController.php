@@ -37,7 +37,7 @@ class UsersController extends \Com\Daw2\Core\BaseController{
                     header("location: /shironime");
                 }
                 else{
-                    header("location: /buySubs");
+                    header("location: /buySub");
                 }
                 
             }
@@ -75,7 +75,9 @@ class UsersController extends \Com\Daw2\Core\BaseController{
                 $userAddOk = $modelUser->register($_POST['username'], $_POST['email'], $_POST['password']);
 
                 if($userAddOk){
-                    header("location: /buySubs");
+                    $user = $modelUser->selectUser($_POST['username']);
+                    $_SESSION['usuario'] = $user;
+                    header("location: /buySub");
                 }
 
             }else{
@@ -144,7 +146,7 @@ class UsersController extends \Com\Daw2\Core\BaseController{
             if(isset($post['password']) && !empty($post['password'])){
 
                 if(preg_match("/[^A-Za-z0-9.]/", $post['password'])){
-                    $errores['password'] = "La contraseñ debe estar formada solo por letras, números y \".\"";
+                    $errores['password'] = "La contraseña debe estar formada solo por letras, números y \".\"";
                 }
 
                 if(!preg_match("/[A-Z]{1,}/", $post['password'])){
@@ -175,6 +177,10 @@ class UsersController extends \Com\Daw2\Core\BaseController{
         
         $modelUser =  new \Com\Daw2\Models\UsersModel();
         $user = $modelUser->selectUser($username);
+
+        if(is_null($user['finalSubs'])){
+            return false;
+        }
         
         return strtotime($user['finalSubs']) >= strtotime(date("Y-m-d",time()));
         
